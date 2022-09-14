@@ -38,6 +38,7 @@ def stlacenie(event):
 
 
 subor.close() #zavrie subor
+y=20
 canvas.bind('<Key>', stlacenie)  #stlacenie lubovolnej klavesy
 
 
