@@ -1,29 +1,22 @@
-subor=open('skok_do_dialky.txt')
-krajiny = {}
-maxdlzka=0
-vitazi=[]
-for riadok in subor:
-    dlzka=0
-    udaje=riadok.split()
-    krajiny[udaje[1]] = krajiny.get(udaje[1], 0) + 1
-
-    for i in range(5):
-        dlzka=max(dlzka, int(udaje[i+2]))
-    if dlzka > maxdlzka:
-        maxdlzka = dlzka
-        vitazi = [udaje[0]]
-    elif dlzka == maxdlzka:
-        vitazi.append(udaje[0])
-print("Zoznam krajin: ")
-for krajina in krajiny:
-    print(krajina, end=', ')
-print()
-print("Pocty sportovcov: ")
-for dvojica in krajiny.items():
-
-
-
-    print(dvojica[0], ':', dvojica[1])
-print("Najdlhsi skok:", maxdlzka)
-for vitaz in vitazi:
-    print(vitazi)
+subor=open("mena_zamestnancov.txt")
+mena=subor.readlines()
+subor.close()
+for i in range(len(mena)):
+    mena[i] = mena[i].strip()
+pocet=len(mena) // 2
+print("Pocet mien:",pocet)
+krstne=mena[:pocet]
+priezviska=mena[pocet:]
+dlzka=0
+for s in priezviska:
+    dlzka= max(dlzka, len(s))
+print("Najdlhsie priezvisko je", dlzka)
+dlzka=0
+for s in krstne:
+    dlzka=max(dlzka,len(s))
+print("Najdlhsie meno je", dlzka)
+vystup=open('vystup.txt', 'w')
+for i in range(pocet):
+    vystup.write(krstne[i] + (' ' * (dlzka - len(krstne[i]) + 1))
+                 + priezviska[i]+'\n')
+vystup.close()
